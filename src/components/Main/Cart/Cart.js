@@ -51,7 +51,6 @@ export default class Cart extends Component {
         const arrTotal = cartArray.map(e =>
             {  if(e.quantity>-1 && e.quantity != null){
                    return(e.product.price * e.quantity) 
-
                 }else{
                     return(e.quantity =0) 
                 }

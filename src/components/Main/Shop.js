@@ -95,7 +95,6 @@ export default class Shop extends Component{
                     product :  e.product,              
                     quantity: e.quantity-1 ,                        
                 }
-                    
             }
     
         })
@@ -111,8 +110,7 @@ export default class Shop extends Component{
             // const index = this.state.cartArray.findIndex(e=>e.product.id === productId)
         this.setState({
             cartArray: newCart
-        },
-        ()=>saveCart(this.state.cartArray)
+        },()=>saveCart(this.state.cartArray)
         )
     }
 
@@ -131,10 +129,11 @@ export default class Shop extends Component{
     }
 
     _openMenu = () => {
-        console.log('opennnnne')
+        
         const { open } = this.props;
         open();
     }
+
     render(){
         const { cartArray} =this.state;
         return(

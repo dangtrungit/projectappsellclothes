@@ -39,7 +39,7 @@
 //     _renderRow(data){
 //         return(<Text>{data}</Text>);
 //     }
-
+    // registry
     // _postDataDemo(){
     //     // let num01 = this.state.num1;
     //     // let num02 = this.state.num2;
