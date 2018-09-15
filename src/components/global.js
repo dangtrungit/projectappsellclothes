@@ -3,4 +3,5 @@ module.export={
     incrQuantity: null,
     decrQuantity:null,
     removeProduct:null,
+    imahihi:null,
 }
