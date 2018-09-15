@@ -100,11 +100,8 @@ export default class Cart extends Component {
                                     <Text style={{ color: 'red', textAlign: "center" }}>SHOW DETAILS</Text>
 
                                 </View>
-
                             </View>
                         </View>
-
-
                     )}
 
                 />
