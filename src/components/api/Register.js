@@ -1,6 +1,6 @@
-const uri = 'http://192.168.1.4:8888/api/registryuser.php'
+const url = 'http://192.168.1.4:8888/api/registryuser.php'
 const Register = (name, email, password) => (
-    fetch(uri, {
+    fetch(url, {
         method: "POST",
         headers: {
             Accept: 'application/json',

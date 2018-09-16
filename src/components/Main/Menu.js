@@ -7,9 +7,8 @@ import {
 } from 'react-native';
 
 import styles from '../styles/Styles';
-import ListviewA from '../logins/Listview'
+import global from '../global'
 // import Authentication from '../Authentication/Authentication';
-import {Main ,} from './Main'
 
 // import {
 //   createStackNavigator
@@ -27,9 +26,18 @@ export default class Menu extends Component {
         this.state={
            title:0,
            isLogin : false,
-        }    
+        }  
+        global.onSignIn = this._onSignIn.bind(this);  
     
       }
+
+    _onSignIn(){
+      this.setState({
+        isLogin : true,
+        
+      })
+      
+    }
     
     _onPress=() =>{
       console.log("on click")
