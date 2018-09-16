@@ -7,7 +7,6 @@ const signIn =  ( email , password) =>{
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name :name,
             email : email,
             password : password,
         }).then((response) => response.text())
