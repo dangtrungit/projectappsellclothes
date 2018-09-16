@@ -31,7 +31,7 @@ export default class ChangeInfo extends Component {
         }
     }
 
-    _goBack =() =>{
+    _goBack = () => {
         this.props.navigation.goBack();
     }
 
@@ -43,16 +43,16 @@ export default class ChangeInfo extends Component {
                 'Notice',
                 'Đổi thông tin thành công !',
                 [
-                  { text: 'OK', onPress: this._goBack()  },
+                    { text: 'OK', onPress: this._goBack() },
                 ],
                 global.onSignIn(user),
                 { cancelable: false }))
-            .catch(err=>console.log("Error Change Info",err))
-            
+            .catch(err => console.log("Error Change Info", err))
+
     }
     render() {
-        const {nameC,addressC,phoneC} = this.state;
-       
+        const { nameC, addressC, phoneC } = this.state;
+
         return (
             <View >
                 <View style={{ padding: 10, flexDirection: "row", backgroundColor: '#2c3e50', justifyContent: 'space-between', }}>

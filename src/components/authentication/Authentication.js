@@ -32,10 +32,10 @@ class Authentication extends Component {
 
     }
   }
-  
 
-  componentDidMount(){
-    getToken().then(token=>console.log('TOKEN :' +token))
+
+  componentDidMount() {
+    getToken().then(token => console.log('TOKEN :' + token))
   }
   onSuccess() {
     Alert.alert(
@@ -126,10 +126,10 @@ class Authentication extends Component {
               { text: 'OK', onPress: this._onBack() },
             ],
             { cancelable: false })
-          
-            global.onSignIn(responseJson.user)
-            saveToken(responseJson.token);
-            console.log(responseJson.token)
+
+          global.onSignIn(responseJson.user)
+          saveToken(responseJson.token);
+          console.log(responseJson.token)
         }
       })
       .catch((error) => {

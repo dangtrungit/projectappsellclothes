@@ -1,10 +1,10 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import {
     View,
     Text,
     Image,
     Dimensions,
-    TextInput,Alert
+    TextInput, Alert
 
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
@@ -25,92 +25,92 @@ import global from '../global'
 
 
 const { height } = Dimensions.get('screen');
-export default class Shop extends Component{
+export default class Shop extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            selectedTab:'home',
+        this.state = {
+            selectedTab: 'home',
             cartArray: [],
             types: [],
             products: [],
-            
+
         }
-        global.addProductToCart = this._addProductToCart.bind(this);  
-        global.incrQuantity = this._incrQuantity.bind(this); 
-        global.decrQuantity = this._decrQuantity.bind(this); 
-        global.removeProduct = this._removeProduct.bind(this); 
+        global.addProductToCart = this._addProductToCart.bind(this);
+        global.incrQuantity = this._incrQuantity.bind(this);
+        global.decrQuantity = this._decrQuantity.bind(this);
+        global.removeProduct = this._removeProduct.bind(this);
 
 
     }
 
     componentDidMount() {
         initData().then(resJson => {
-                // console.log(resJson)
-                const { type, product } = resJson
-                this.setState({
-                    types: type,
-                    products: product
-                })
-            });
-            getCart().then(cartArray => this.setState({
-                cartArray
-            }))
-            getIdproduct().then(id => this.setState({
-                id:this.state.id
-            }))
+            // console.log(resJson)
+            const { type, product } = resJson
+            this.setState({
+                types: type,
+                products: product
+            })
+        });
+        getCart().then(cartArray => this.setState({
+            cartArray
+        }))
+        getIdproduct().then(id => this.setState({
+            id: this.state.id
+        }))
     }
 
 
-    _addProductToCart= (product) =>{    
-        let cartarr= this.state.cartArray.concat({product,quantity: 1})            
+    _addProductToCart = (product) => {
+        let cartarr = this.state.cartArray.concat({ product, quantity: 1 })
         this.setState(
-                { 
-                    cartArray : Array.from(new Set(cartarr.map(JSON.stringify))).map(JSON.parse),
-                },
-                () =>saveCart(this.state.cartArray)
-            );  
-        }
+            {
+                cartArray: Array.from(new Set(cartarr.map(JSON.stringify))).map(JSON.parse),
+            },
+            () => saveCart(this.state.cartArray)
+        );
+    }
 
-    _incrQuantity(productId){
-        const newCart =this.state.cartArray.map(e => {
-            if(e.product.id !== productId) return e;
-            return { product :  e.product,quantity:e.quantity+1}
+    _incrQuantity(productId) {
+        const newCart = this.state.cartArray.map(e => {
+            if (e.product.id !== productId) return e;
+            return { product: e.product, quantity: e.quantity + 1 }
         })
         // const index = this.state.cartArray.findIndex(e=>e.product.id === productId)
         this.setState({
             cartArray: newCart
         },
-        ()=>saveCart(this.state.cartArray)
+            () => saveCart(this.state.cartArray)
         )
     }
 
-    _decrQuantity(productId){
-        const newCart =this.state.cartArray.map(e => {
+    _decrQuantity(productId) {
+        const newCart = this.state.cartArray.map(e => {
             // (console.log(e))
-            if(e.product.id !== productId){
+            if (e.product.id !== productId) {
                 return e;
-            } else{
-                return { 
-                    product :  e.product,              
-                    quantity: e.quantity-1 ,                        
+            } else {
+                return {
+                    product: e.product,
+                    quantity: e.quantity - 1,
                 }
             }
-    
+
         })
         // const index = this.state.cartArray.findIndex(e=>e.product.id === productId)
         this.setState({
             cartArray: newCart
-        },()=>saveCart(this.state.cartArray)
+        }, () => saveCart(this.state.cartArray)
         )
     }
 
-    _removeProduct =(productId) =>{
-        const newCart =this.state.cartArray.filter(e => e.product.id !== productId);
-            // const index = this.state.cartArray.findIndex(e=>e.product.id === productId)
+    _removeProduct = (productId) => {
+        const newCart = this.state.cartArray.filter(e => e.product.id !== productId);
+        // const index = this.state.cartArray.findIndex(e=>e.product.id === productId)
         this.setState({
             cartArray: newCart
-        },()=>saveCart(this.state.cartArray)
+        }, () => saveCart(this.state.cartArray)
         )
     }
 
@@ -129,85 +129,85 @@ export default class Shop extends Component{
     }
 
     _openMenu = () => {
-        
+
         const { open } = this.props;
         open();
     }
 
-    render(){
-        const { cartArray} =this.state;
-        return(
-            <View style= {{flex:1}}>
-                <Header onOpen={this._openMenu}/>
-                  
-                  <TabNavigator
-                    tabBarShadowStyle = {{backgroundColor:'green'}}
-                    style ={{borderRadius:10}}
-                    >
+    render() {
+        const { cartArray } = this.state;
+        return (
+            <View style={{ flex: 1 }}>
+                <Header onOpen={this._openMenu} />
+
+                <TabNavigator
+                    tabBarShadowStyle={{ backgroundColor: 'green' }}
+                    style={{ borderRadius: 10 }}
+                >
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'home'}
                         title="Home"
-                        selectedTitleStyle={{color:"#00bcd4"}}
+                        selectedTitleStyle={{ color: "#00bcd4" }}
                         onPress={this._home}
-                        renderIcon={() => 
-                        <Image
-                            // style ={{width:20,height:20}}
-                            source={require('../../images/icons8-home-page-24.png')} />}
+                        renderIcon={() =>
+                            <Image
+                                // style ={{width:20,height:20}}
+                                source={require('../../images/icons8-home-page-24.png')} />}
                         renderSelectedIcon={() =>
-                        <Image
-                            // style ={{width:20,height:20,}}
-                            source={require('../../images/icons8-home-page-24-color.png')} />}
-                        >
-                        <RootHome/>
+                            <Image
+                                // style ={{width:20,height:20,}}
+                                source={require('../../images/icons8-home-page-24-color.png')} />}
+                    >
+                        <RootHome />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'cart'}
                         title="Cart"
                         onPress={this._cart}
-                        badgeText ={cartArray.length}
-                        renderIcon={() => 
+                        badgeText={cartArray.length}
+                        renderIcon={() =>
                             <Image
-                            source={require('../../images/icons8-shopping-cart-24.png')} />}
-                            renderSelectedIcon={() =>
+                                source={require('../../images/icons8-shopping-cart-24.png')} />}
+                        renderSelectedIcon={() =>
                             <Image
-                             source={require('../../images/icons8-shopping-cart-24-color.png')} />}
-                        >
-                        <Cart cartArray={cartArray} 
-                       />      
+                                source={require('../../images/icons8-shopping-cart-24-color.png')} />}
+                    >
+                        <Cart cartArray={cartArray}
+                        />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'search'}
                         title="Search"
                         onPress={this._search}
-                        renderIcon={() => 
-                            <Image                             
+                        renderIcon={() =>
+                            <Image
                                 source={require('../../images/icons8-search-24.png')} />}
-                            renderSelectedIcon={() =>
-                            <Image                                
+                        renderSelectedIcon={() =>
+                            <Image
                                 source={require('../../images/icons8-search-24-color.png')} />}
-                        >
-                        <Search/>     
+                    >
+                        <Search />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'contact'}
                         title="Contact"
                         onPress={this._contact}
-                        renderIcon={() => 
-                            <Image                             
+                        renderIcon={() =>
+                            <Image
                                 source={require('../../images/icons8-contacts-24.png')} />}
                         renderSelectedIcon={() =>
-                             <Image                                
+                            <Image
                                 source={require('../../images/icons8-contacts-24-color.png')} />}
-                        >
-                        <Contact/>     
+                    >
+                        <Contact />
                     </TabNavigator.Item>
-                    </TabNavigator>
+                </TabNavigator>
 
-        </View>
-       
+            </View>
+
         );
     }
 }

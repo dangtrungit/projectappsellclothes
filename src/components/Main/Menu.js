@@ -31,14 +31,11 @@ export default class Menu extends Component {
     global.onSignIn = this._onSignIn.bind(this);
 
   }
-  
-  componentDidMount(){
-    const{user} = this.state;
-    this.setState({
-      user: user
-    })
+
+  componentDidMount() {
+
   }
-  
+
   _onSignIn(user) {
     this.setState({
       user: user
@@ -57,7 +54,7 @@ export default class Menu extends Component {
     this.props.navigation.navigate('Authentications', { itemId: this.state.title, otherParam: 'data of you' })
   }
   _gotoChangeInfo = () => {
-    this.props.navigation.navigate('Changeinfos', { user : this.state.user })
+    this.props.navigation.navigate('Changeinfos', { user: this.state.user })
   }
   _gotoOrderHistory = () => {
     this.props.navigation.navigate('OrderHistorys', { itemId: this.state.title, otherParam: 'data of you' })
@@ -76,7 +73,7 @@ export default class Menu extends Component {
   }
 
   render() {
-    
+
     const logoutJSX = (
       <TouchableOpacity
         onPress={this._gotoAuthen}
