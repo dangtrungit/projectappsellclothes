@@ -25,56 +25,56 @@ class Authentication extends Component {
 
   }
 
-  onSuccess(){
+  onSuccess() {
     Alert.alert(
       'Notice',
       'Đăng kí thành công!',
       [
-        {text: 'OK', onPress: this._onSignIn  },
+        { text: 'OK', onPress: this._onSignIn },
       ],
       { cancelable: false }
     )
   }
 
-  onNotsuccess(){
+  onNotsuccess() {
     Alert.alert(
       'Notice',
       'Đăng kí không thành công! Vui lòng nhập đầy đủ thông tin.',
-      [      
-        {text: 'OK', onPress: this._removeEmail},
+      [
+        { text: 'OK', onPress: this._removeEmail },
       ],
       { cancelable: false }
     )
   }
 
-  alreadyExist(){
+  alreadyExist() {
     Alert.alert(
       'Notice',
       'Email đã tồn tại! Vui lòng nhập email khác.',
-      [      
-        {text: 'OK', onPress: this._removeEmail},
+      [
+        { text: 'OK', onPress: this._removeEmail },
       ],
       { cancelable: false }
     )
   }
 
-  _removeEmail =() =>{
+  _removeEmail = () => {
     this.setState({
       EMAIL: ''
     })
   }
- 
+
 
   _signUpNow = () => {
     const { NAME, EMAIL, PASSWORD } = this.state;
     Register(NAME, EMAIL, PASSWORD)
-    .then((responseJson) => {
+      .then((responseJson) => {
         console.log(responseJson)
-        if(responseJson === "THANH_CONG") {
+        if (responseJson === "THANH_CONG") {
           return this.onSuccess();
-        }else if(responseJson === "DA_TON_TAI"){
+        } else if (responseJson === "DA_TON_TAI") {
           return this.alreadyExist();
-        }else{
+        } else {
           return this.onNotsuccess();
         }
 
@@ -84,12 +84,12 @@ class Authentication extends Component {
       })
   }
 
-  _onSignIn = () => {    
+  _onSignIn = () => {
     this.setState({
       isSignIn: true,
       EMAIL: '',
-      NAME:'',
-      PASSWORD:'',
+      NAME: '',
+      PASSWORD: '',
     })
   }
 
@@ -146,7 +146,7 @@ class Authentication extends Component {
 
         </TextInput>
         <TextInput
-        value={this.state.EMAIL}
+          value={this.state.EMAIL}
           onChangeText={(EMAIL) => this.setState({ EMAIL })}
           placeholder="Enter your email"
           placeholderTextColor="grey"
@@ -155,7 +155,7 @@ class Authentication extends Component {
 
         </TextInput>
         <TextInput
-        value={this.state.PASSWORD}
+          value={this.state.PASSWORD}
           onChangeText={(PASSWORD) => this.setState({ PASSWORD })}
           placeholder="Enter your password"
           placeholderTextColor="grey"
@@ -166,8 +166,8 @@ class Authentication extends Component {
 
         </TextInput>
         <TextInput
-        value={this.state.PASSWORD}
-        onChangeText={(PASSWORD) => this.setState({ PASSWORD })}
+          value={this.state.PASSWORD}
+          onChangeText={(PASSWORD) => this.setState({ PASSWORD })}
           placeholder="Re-enter your password"
           placeholderTextColor="grey"
           underlineColorAndroid='white'
