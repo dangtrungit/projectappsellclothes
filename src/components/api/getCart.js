@@ -9,7 +9,7 @@ const getCart = async () => {
   }else{
     try {
       if (cartArray == null) {
-        alert("Error! You dont have Data")
+        alert("Nhanh tay đặt hàng ! :))")
       }
       
     } catch (error) {
