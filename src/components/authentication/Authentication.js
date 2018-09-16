@@ -13,10 +13,6 @@ import styles from '../styles/Styles';
 import Register from '../api/Register'
 const { height, width } = Dimensions.get('window');
 class Authentication extends Component {
-  // static navigationOptions = {
-  //     title: 'Authentication',
-
-  //   };
 
   constructor(props) {
     super(props);
@@ -26,11 +22,6 @@ class Authentication extends Component {
       EMAIL: '',
       PASSWORD: '',
     }
-
-  }
-
-  componentDidMount() {
-
 
   }
 
