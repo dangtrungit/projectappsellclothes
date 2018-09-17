@@ -44,7 +44,7 @@ export default class Menu extends Component {
   }
 
   _onPress = () => {
-    console.log("on click")
+   
     this.setState({
       title: this.state.title + 1
     })

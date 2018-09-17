@@ -46,7 +46,7 @@ export default class Shop extends Component {
 
     componentDidMount() {
         initData().then(resJson => {
-            // console.log(resJson)
+            
             const { type, product } = resJson
             this.setState({
                 types: type,
@@ -87,7 +87,7 @@ export default class Shop extends Component {
 
     _decrQuantity(productId) {
         const newCart = this.state.cartArray.map(e => {
-            // (console.log(e))
+            
             if (e.product.id !== productId) {
                 return e;
             } else {
@@ -139,7 +139,6 @@ export default class Shop extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <Header onOpen={this._openMenu} />
-
                 <TabNavigator
                     tabBarShadowStyle={{ backgroundColor: 'green' }}
                     style={{ borderRadius: 10 }}

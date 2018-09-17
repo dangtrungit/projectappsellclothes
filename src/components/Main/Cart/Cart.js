@@ -9,19 +9,13 @@ import {
     ListView
 
 } from 'react-native';
-const uri = 'http://192.168.1.4:8888/api/images/product/'
+const uri = 'http://192.168.0.100:8888/api/images/product/'
 const { height, width } = Dimensions.get('window');
 import global from '../../../components/global'
+import toTitleCase from '../../FomatFont/ToTitleCase'
 
 
-function toTitleCase(str) {
-    return str.replace(
-        /\w\S*/g,
-        function (txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    );
-}
+
 
 export default class Cart extends Component {
 

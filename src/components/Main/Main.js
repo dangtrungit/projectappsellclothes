@@ -34,15 +34,17 @@ export default class Main extends Component {
         getToken()
             .then(token => checkLogin(token))
             .then(res => global.onSignIn(res.user))
-            .catch(err => console.log("LOIIIIIIIIIIIIIIIIIIIII", err))
+            .catch(err =>
+                 console.log("LOIIIIIIIIIIIIIIIIIIIII", err)
+            )
 
-        setInterval(() => {
-            getToken()
-                .then(token => {
-                    console.log("you have data refreshtoken", token),
-                        refreshToken(token)
-                })
-        }, 3600 * 24)
+        // setInterval(() => {
+        //     getToken()
+        //         .then(token => {
+        //             console.log("you have data refreshtoken", token),
+        //                 refreshToken(token)
+        //         })
+        // }, 900000000 )
     }
     _onPress = () => {
         this.setState({

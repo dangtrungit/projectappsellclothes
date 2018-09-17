@@ -5,7 +5,7 @@ import {
     Image,
     Dimensions
 } from 'react-native';
-
+import toTitleCase from '../../FomatFont/ToTitleCase'
 const {height,width}= Dimensions.get('window');
 
 export default class Search extends Component {
@@ -19,7 +19,7 @@ export default class Search extends Component {
                     source={require('../../../temps/dressbluegi.jpg')}/>
                 <View style={{padding:5,flex:1,justifyContent: 'space-between',}}>
                     <Text style={{fontSize:20,color:'green',fontWeight:"bold"}}>
-                        Name Dress Blue
+                        {toTitleCase('ahhihihi hihi')}
                     </Text>
                     <Text>
                         117$

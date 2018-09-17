@@ -9,11 +9,11 @@ import {
     }else{
       try {
         if (value == null) {
-          console.log("Error! You dont have Data")
+          // console.log("Error! You dont have Data")
         }
         
       } catch (error) {
-        console.log("we dont hva data")
+        // console.log("we dont hva data")
       } finally {
         return [];
       }

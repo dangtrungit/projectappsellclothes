@@ -19,14 +19,14 @@ export default class MyStorage extends Component{
     }
 
     _save = async() =>{
-        console.log("START")
+        // console.log("START")
         try {
-            console.log("SAVE OK!"),
+            // console.log("SAVE OK!"),
             await AsyncStorage.setItem('key','Em gai mua');
             
            
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
       
     }

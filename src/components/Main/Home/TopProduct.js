@@ -7,7 +7,8 @@ import {
     TouchableOpacity
 } from 'react-native';
 import styles from '../../styles/Styles'
-const uri = 'http://192.168.1.4:8888/api/images/product/'
+
+const uri = 'http://192.168.0.100:8888/api/images/product/'
 
 function toTitleCase(str) {
     return str.replace(
@@ -17,6 +18,8 @@ function toTitleCase(str) {
         }
     );
 }
+
+
 
 export default class TopProduct extends Component {
     constructor(props) {
@@ -33,13 +36,12 @@ export default class TopProduct extends Component {
             productkey: product,
 
         })
+       
     }
 
 
     render() {
         const { products } = this.props;
-
-
         return (
 
             <View style={{ padding: 5, margin: 5, backgroundColor: 'white', elevation: 5, }}>

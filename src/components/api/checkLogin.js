@@ -1,4 +1,4 @@
-const url = 'http://192.168.1.4:8888/api/check_login.php'
+const url = 'http://192.168.0.100:8888/api/check_login.php'
 const checkLogin = (token) => (
     fetch(url, {
         method: "POST",

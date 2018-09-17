@@ -30,7 +30,7 @@ class Home extends Component {
 
     componentDidMount() {
 
-        fetch('http://192.168.1.4:8888/api/')
+        fetch('http://192.168.0.100:8888/api/')
             .then((response) => response.json())
             .then((resJson) => {
 
@@ -49,13 +49,13 @@ class Home extends Component {
     }
 
     _gotoListProduct() {
-
         this.props.navigation.navigate('ListProducts')
     }
 
     render() {
         const { types, products } = this.state;
         const { navigate } = this.props.navigation;
+        const { navigation } = this.props;
 
         return (
             <ScrollView >
@@ -63,7 +63,8 @@ class Home extends Component {
                     gotoDetails={this._gotoProductDetail} />
                 <Category
                     types={types}
-                    gotoListProduct={this._gotoListProduct} />
+                    navigate={navigate}
+                 />
                 <TopProduct
                     navigate={navigate}
                     products={products} />

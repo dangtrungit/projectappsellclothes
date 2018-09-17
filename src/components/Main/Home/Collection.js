@@ -11,10 +11,10 @@ import styles from '../../styles/Styles'
 const { width, height } = Dimensions.get('window');
 export default class Collection extends Component{
     render(){
-        const {types} = this.props;
+        const {types,gotoDetails} = this.props;
         return(
             <TouchableOpacity
-                onPress={this.props.gotoDetails}             
+                onPress={gotoDetails}             
                 style= {styles.wrapper}>
              <View style={{flex:1}}>
                 <Text               

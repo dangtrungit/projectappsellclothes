@@ -3,17 +3,15 @@ import { View, Text, Image, TouchableOpacity, Dimensions } from 'react-native';
 import styles from '../../../styles/Styles'
 import global from '../../../global'
 const { height, width } = Dimensions.get('window')
-const uri = 'http://192.168.1.4:8888/api/images/product/'
+const uri = 'http://192.168.0.100:8888/api/images/product/'
 
 export default class ProductDetail extends Component {
     constructor(props) {
         super(props);
     }
 
-    addProductToCart=(product)=>{
-        
-            global.addProductToCart(product)
-    
+    addProductToCart = (product) => {
+        global.addProductToCart(product)
     }
 
     _goBack = () => {
@@ -23,7 +21,6 @@ export default class ProductDetail extends Component {
     render() {
         const { navigation } = this.props;
         const product = navigation.getParam('productkey', 'ERROR KEY');
-        
 
         return (
             <View style={{ margin: 10, backgroundColor: 'white', padding: 10, elevation: 10, flex: 1 }}>
@@ -34,7 +31,7 @@ export default class ProductDetail extends Component {
                             source={require('../../../../images/icons8-back-24.png')}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>this.addProductToCart(product)} >
+                    <TouchableOpacity onPress={() => this.addProductToCart(product)} >
                         <Image
                             style={{ tintColor: '#0a5767' }}
                             source={require('../../../../images/icons8-shopping-cart-24-color.png')}
