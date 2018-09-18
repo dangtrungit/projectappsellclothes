@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import styles from '../styles/Styles';
 import Drawer from 'react-native-drawer';
-import Menu from './Menu';
+
 import Shop from './Shop';
 import App2 from '../MyApp/App2';
 import Settingforapp from '../MyApp/Settingforapp';

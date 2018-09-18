@@ -8,21 +8,19 @@ import {
 
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import RootHome from './Home/Home';
+import RootHome,{  Home } from './Home/Home';
 import Cart from './Cart/Cart';
 import Contact from './Contact/Contact';
 import Search from './Search/Search';
 
 import styles from '../styles/Styles';
 import Header from './Header';
-import initData from '../api/initData'
-import saveCart from '../api/saveCart'
-import getCart from '../api/getCart'
-import saveIdproduct from '../api/saveIdproduct'
-import getIdproduct from '../api/getIdproduct'
-import global from '../global'
-
-
+import initData from '../api/initData';
+import saveCart from '../api/saveCart';
+import getCart from '../api/getCart';
+import saveIdproduct from '../api/saveIdproduct';
+import getIdproduct from '../api/getIdproduct';
+import global from '../global';
 
 const { height } = Dimensions.get('screen');
 export default class Shop extends Component {
@@ -34,19 +32,18 @@ export default class Shop extends Component {
             cartArray: [],
             types: [],
             products: [],
-
         }
+        this.arrnull = [];
         global.addProductToCart = this._addProductToCart.bind(this);
         global.incrQuantity = this._incrQuantity.bind(this);
         global.decrQuantity = this._decrQuantity.bind(this);
         global.removeProduct = this._removeProduct.bind(this);
-
-
+        global.gotoSearch = this._search.bind(this);
     }
 
     componentDidMount() {
         initData().then(resJson => {
-            
+
             const { type, product } = resJson
             this.setState({
                 types: type,
@@ -87,7 +84,7 @@ export default class Shop extends Component {
 
     _decrQuantity(productId) {
         const newCart = this.state.cartArray.map(e => {
-            
+
             if (e.product.id !== productId) {
                 return e;
             } else {
@@ -121,21 +118,22 @@ export default class Shop extends Component {
         this.setState({ selectedTab: 'cart' });
     }
 
-    _search = () => {
-        this.setState({ selectedTab: 'search' });
+    _search = (arrProduct) => {
+        this.arrnull = arrProduct;
+        this.setState({ selectedTab: 'search', products: arrProduct });
     }
+
     _contact = () => {
         this.setState({ selectedTab: 'contact' });
     }
 
     _openMenu = () => {
-
         const { open } = this.props;
         open();
     }
 
     render() {
-        const { cartArray } = this.state;
+        const { cartArray, products } = this.state;
         return (
             <View style={{ flex: 1 }}>
                 <Header onOpen={this._openMenu} />
@@ -179,7 +177,8 @@ export default class Shop extends Component {
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'search'}
                         title="Search"
-                        onPress={this._search}
+                        onPress={() => this._search(this.arrnull)}
+
                         renderIcon={() =>
                             <Image
                                 source={require('../../images/icons8-search-24.png')} />}
@@ -187,7 +186,7 @@ export default class Shop extends Component {
                             <Image
                                 source={require('../../images/icons8-search-24-color.png')} />}
                     >
-                        <Search />
+                        <Search products={products} />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item
@@ -204,9 +203,7 @@ export default class Shop extends Component {
                         <Contact />
                     </TabNavigator.Item>
                 </TabNavigator>
-
             </View>
-
         );
     }
 }

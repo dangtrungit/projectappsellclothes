@@ -49,6 +49,7 @@ export default class ListProduct extends Component {
         this.setState({ refreshing: true, page: (page + 1) });
         getListProduct(typeId, page).then(arrProduct => {
             this.arr = arrProduct.concat(this.arr);
+            
             this.setState({
                 listproducts: this.state.listproducts.cloneWithRows(this.arr),
                 refreshing: false
@@ -66,6 +67,13 @@ export default class ListProduct extends Component {
                     { text: 'OK', }
                 ],
                 { cancelable: false })
+        })
+    }
+
+    _gotoDetails=(product)=>{
+        const { navigation } = this.props;
+        navigation.navigate('Details',{
+            productkey: product,
         })
     }
 
@@ -89,6 +97,7 @@ export default class ListProduct extends Component {
                         </Text>
                 </View>
                 <ListView
+                
                     enableEmptySections
                     // contentContainerStyle={styles.body}
                     dataSource={this.state.listproducts}
@@ -112,7 +121,9 @@ export default class ListProduct extends Component {
                                 <View style={{ flexDirection: "row", justifyContent: 'space-between', }}>
                                     <Text>Color : {product.color}</Text>
                                     <View style={{ elevation: 10, height: height * 0.02, width: width * 0.03, backgroundColor: product.color.toLowerCase(), borderRadius: 5, margin: 5 }} />
-                                    <TouchableOpacity style={{ justifyContent: "center", }}>
+                                    <TouchableOpacity 
+                                    onPress={()=>this._gotoDetails(product)}
+                                    style={{ justifyContent: "center", }}>
                                         <Text style={{ color: '#df2f33', fontWeight: "bold", fontSize: 11 }}>SHOW DETAILS</Text>
                                     </TouchableOpacity>
 

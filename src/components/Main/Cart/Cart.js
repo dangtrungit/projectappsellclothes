@@ -69,7 +69,7 @@ export default class Cart extends Component {
 
                             <View style={{ justifyContent: 'space-between', flex: 1, marginLeft: 10 }}>
                                 <View style={{ flexDirection: "row", justifyContent: 'space-between', }}>
-                                    <Text style={{ color: 'black', fontSize: 18, }}>{toTitleCase(cartItem.product.name)}</Text>
+                                    <Text style={{ fontWeight:"bold",color: '#167285', fontSize: 18, }}>{toTitleCase(cartItem.product.name)}</Text>
                                     <TouchableOpacity onPress={()=>this._removeProduct(cartItem.product.id)}>
                                         <Text style={{ color: 'black', fontSize: 15, }}>x</Text>
                                     </TouchableOpacity>
@@ -88,9 +88,8 @@ export default class Cart extends Component {
                                     style={{backgroundColor:'#167285', borderRadius:10,flex:1}}  
                                     onPress= {()=>this._decrQuantity(cartItem.product.id)}>
                                         <Text style={{ color: 'black', textAlign: "center" }}>-</Text>
-                                    </TouchableOpacity>
-                                    
-                                    <Text style={{ color: 'red', textAlign: "center" }}>SHOW DETAILS</Text>
+                                    </TouchableOpacity>                                    
+                                    <Text style={{ color: 'red', fontWeight:'bold' }}>Promotional Code</Text>
 
                                 </View>
                             </View>

@@ -11,13 +11,13 @@ import Category from './Category';
 import TopProduct from './TopProduct';
 import ProductDetail from '../shop/productdetail/ProductDetail';
 import ListProduct from '../shop/listproduct/ListProduct';
-
-import Cart from '../Cart/Cart'
+import global from '../../global'
+// import Cart from '../Cart/Cart'
 
 import { createStackNavigator } from 'react-navigation';
 
 
-class Home extends Component {
+ export class Home extends Component {
 
     constructor(props) {
         super(props);
@@ -25,7 +25,9 @@ class Home extends Component {
             types: [],
             products: []
         };
-
+        // this.arrnull=null;
+        global.gotoProductDetail = this._gotoProductDetail.bind(this);
+        
     }
 
     componentDidMount() {
@@ -43,9 +45,14 @@ class Home extends Component {
             });
     }
 
-    _gotoProductDetail = () => {
+    _gotoProductDetail = (product) => {
+        
+      
+        this.arrnull = product;
         // const { navigate } = this.props;
-        this.props.navigation.navigate('Details')
+         this.props.navigation.push('Details', {
+            productkey: this.arrnull
+        })
     }
 
     _gotoListProduct() {
@@ -56,6 +63,9 @@ class Home extends Component {
         const { types, products } = this.state;
         const { navigate } = this.props.navigation;
         const { navigation } = this.props;
+        const { selectedTab } = this.props;
+        console.log("MY SLEEEEE",selectedTab)
+        
 
         return (
             <ScrollView >
@@ -64,7 +74,7 @@ class Home extends Component {
                 <Category
                     types={types}
                     navigate={navigate}
-                 />
+                />
                 <TopProduct
                     navigate={navigate}
                     products={products} />
@@ -73,8 +83,9 @@ class Home extends Component {
     }
 }
 
-const RootHome = createStackNavigator({
+ const RootHome = createStackNavigator({
     Home: Home,
+    
     Details: ProductDetail,
     ListProducts: ListProduct,
 },
@@ -83,4 +94,4 @@ const RootHome = createStackNavigator({
         headerMode: 'none',
 
     });
-export default RootHome;
+    export default RootHome;

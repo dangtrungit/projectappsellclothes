@@ -29,6 +29,7 @@ export default class Menu extends Component {
       user: '',
     }
     global.onSignIn = this._onSignIn.bind(this);
+    global.gotoProductDetail=this._gotoProductDetail.bind(this);
 
   }
 
@@ -58,6 +59,11 @@ export default class Menu extends Component {
   }
   _gotoOrderHistory = () => {
     this.props.navigation.navigate('OrderHistorys', { itemId: this.state.title, otherParam: 'data of you' })
+  }
+
+  _gotoProductDetail = (product) => {
+    console.log("aaaaaaaaa",product)
+    this.props.navigation.navigate('ProductDetails', { productkey: product })
   }
 
   _onLogin = () => {

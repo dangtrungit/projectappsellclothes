@@ -7,6 +7,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import styles from '../../styles/Styles'
+import global from '../../global'
 
 const uri = 'http://192.168.0.100:8888/api/images/product/'
 
@@ -27,14 +28,14 @@ export default class TopProduct extends Component {
         this.state = {
             dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
         }
-
+        // global.gotoProductDetail=this._gotoDDD.bind(this)
+        
     }
 
     _gotoDDD = (product) => {
         const { navigate } = this.props;
         navigate('Details', {
             productkey: product,
-
         })
        
     }
