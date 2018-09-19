@@ -1,4 +1,4 @@
-const url = 'http://192.168.0.100:8888/api/change_info.php'
+const url = 'http://192.168.0.101:8888/api/change_info.php'
 const changeInfoApi = (token, name, address, phone) => (
     fetch(url, {
         method: "POST",

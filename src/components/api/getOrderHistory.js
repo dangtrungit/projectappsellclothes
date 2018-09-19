@@ -1,5 +1,6 @@
-const url = 'http://192.168.0.101:8888/api/check_login.php'
-const checkLogin = (token) => (
+const url = 'http://192.168.0.101:8888/api/order_history.php'
+const getOrderHistory = (token) => (
+   
     fetch(url, {
         method: "POST",
         headers: {
@@ -11,4 +12,4 @@ const checkLogin = (token) => (
 
 );
 
-module.exports = checkLogin;
+module.exports = getOrderHistory;

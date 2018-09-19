@@ -9,7 +9,7 @@ import {
 import styles from '../../styles/Styles'
 import global from '../../global'
 
-const uri = 'http://192.168.0.100:8888/api/images/product/'
+const uri = 'http://192.168.0.101:8888/api/images/product/'
 
 function toTitleCase(str) {
     return str.replace(

@@ -16,7 +16,7 @@ import ProductDetail from '../shop/productdetail/ProductDetail'
 import styles from '../../styles/Styles'
 
 const { height, width } = Dimensions.get('window');
-const uri = `http://192.168.0.100:8888/api/images/product/`
+const uri = `http://192.168.0.101:8888/api/images/product/`
 
 export default class Search extends Component {
     constructor(props) {
@@ -42,7 +42,6 @@ export default class Search extends Component {
     render() {
         const { products, navigation } = this.props;
         const { listproducts, ok, productnew } = this.state;
-        console.log("MY PROODUC NEW ", productnew)
         const listviewJSX = (
             <ListView
                 // contentContainerStyle={{ height: height}}

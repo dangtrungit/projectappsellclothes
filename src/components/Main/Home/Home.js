@@ -32,11 +32,10 @@ import { createStackNavigator } from 'react-navigation';
 
     componentDidMount() {
 
-        fetch('http://192.168.0.100:8888/api/')
+        fetch('http://192.168.0.101:8888/api/')
             .then((response) => response.json())
             .then((resJson) => {
 
-                // console.log(resJson)
                 const { type, product } = resJson
                 this.setState({
                     types: type,
@@ -63,8 +62,8 @@ import { createStackNavigator } from 'react-navigation';
         const { types, products } = this.state;
         const { navigate } = this.props.navigation;
         const { navigation } = this.props;
-        const { selectedTab } = this.props;
-        console.log("MY SLEEEEE",selectedTab)
+       
+        
         
 
         return (

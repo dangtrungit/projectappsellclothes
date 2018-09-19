@@ -13,7 +13,7 @@ import {
 import getListProduct from '../../../api/getListProduct'
 import toTitleCase from '../../../FomatFont/ToTitleCase'
 const { width, height } = Dimensions.get('window')
-const uri = `http://192.168.0.100:8888/api/images/product/`
+const uri = `http://192.168.0.101:8888/api/images/product/`
 
 export default class ListProduct extends Component {
 

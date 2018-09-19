@@ -66,22 +66,21 @@ export default class ChangeInfo extends Component {
                     <TextInput
                         onChangeText={text => this.setState({ nameC: text })}
                         value={nameC}
-
                         placeholder="Enter your name"
                         underlineColorAndroid='transparent'
-                        style={{ margin: 10, color: '#00bcd4', backgroundColor: 'white', borderRadius: 20, borderWidth: 1, padding: 5, borderColor: '#2c3e50' }} />
+                        style={{ margin: 10, color: '#00bcd4', backgroundColor: 'white', borderRadius: 20, borderWidth: 2, padding: 5, borderColor: '#2c3e50' }} />
                     <TextInput
                         onChangeText={text => this.setState({ addressC: text })}
                         value={addressC}
                         placeholder="Enter your address"
                         underlineColorAndroid='transparent'
-                        style={{ margin: 10, color: '#00bcd4', backgroundColor: 'white', borderRadius: 20, borderWidth: 1, padding: 5, borderColor: '#2c3e50' }} />
+                        style={{ margin: 10, color: '#00bcd4', backgroundColor: 'white', borderRadius: 20, borderWidth: 2, padding: 5, borderColor: '#2c3e50' }} />
                     <TextInput
                         onChangeText={text => this.setState({ phoneC: text })}
                         value={phoneC}
                         placeholder="Enter your phone number"
                         underlineColorAndroid='transparent'
-                        style={{ margin: 10, color: '#00bcd4', backgroundColor: 'white', borderRadius: 20, borderWidth: 1, padding: 5, borderColor: '#2c3e50' }} />
+                        style={{ margin: 10, color: '#00bcd4', backgroundColor: 'white', borderRadius: 20, borderWidth: 2, padding: 5, borderColor: '#2c3e50' }} />
                     <TouchableOpacity
                         onPress={this._changeInfo}
                         style={{ margin: 10, backgroundColor: '#2c3e50', padding: 10, borderRadius: 20, borderWidth: 1, borderColor: '#2c3e50' }}>

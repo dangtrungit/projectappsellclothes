@@ -20,7 +20,7 @@ export default class MyDrawer extends Component{
          this.setState({
             ahuu :this.state.hello,
              });
-        //  console.log(ahuu);
+       
     }
 
     closeControlPanel = () => {

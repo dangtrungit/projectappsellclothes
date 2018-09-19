@@ -61,8 +61,7 @@ export default class Menu extends Component {
     this.props.navigation.navigate('OrderHistorys', { itemId: this.state.title, otherParam: 'data of you' })
   }
 
-  _gotoProductDetail = (product) => {
-    console.log("aaaaaaaaa",product)
+  _gotoProductDetail = (product) => {    
     this.props.navigation.navigate('ProductDetails', { productkey: product })
   }
 

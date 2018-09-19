@@ -12,7 +12,7 @@ import styles from '../../styles/Styles'
 import Swiper from 'react-native-swiper';
 
 const { width, height } = Dimensions.get('window');
-const uri = 'http://192.168.0.100:8888/api/images/type/'
+const uri = 'http://192.168.0.101:8888/api/images/type/'
 export default class Category extends Component {
 
 
@@ -36,7 +36,8 @@ export default class Category extends Component {
                     <Swiper
                         autoplay={true}
                         style={styles.imagecustom2}>
-                        {types.map((type, index, types) => {
+                        {
+                            types.map((type, index, types) => {
                             return (
                                 <TouchableOpacity
                                     key={index}

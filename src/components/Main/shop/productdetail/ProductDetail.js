@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, Dimensions } from 'react-native';
 import styles from '../../../styles/Styles'
 import global from '../../../global'
 const { height, width } = Dimensions.get('window')
-const uri = 'http://192.168.0.100:8888/api/images/product/'
+const uri = 'http://192.168.0.101:8888/api/images/product/'
 
 export default class ProductDetail extends Component {
     constructor(props) {
