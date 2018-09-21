@@ -16,14 +16,13 @@ const uri = 'http://192.168.0.101:8888/api/images/type/'
 export default class Category extends Component {
 
 
-    _gotoListProduct = (typeid) => {
-       
+    _gotoListProduct = (typeid,typename) => {
         const { navigate } = this.props;
-        navigate('ListProducts',{typeId : typeid})
+        navigate('ListProducts',{typeId : typeid,titlename:typename})
     }
 
     render() {
-        const { types, } = this.props;
+        const { types, } = this.props;       
 
         return (
             <View style={styles.wrapper}>
@@ -45,7 +44,7 @@ export default class Category extends Component {
                                         flex: 1, justifyContent: "center",
                                         alignItems: "center"
                                     }}
-                                    onPress={()=> this._gotoListProduct(type.id)}>
+                                    onPress={()=> this._gotoListProduct(type.id,type.name)}>
                                     <Text style={{ color: 'black' }}>{type.name}</Text>
                                     <Image
                                         resizeMode="stretch"

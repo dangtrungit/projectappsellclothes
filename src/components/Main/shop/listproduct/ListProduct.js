@@ -23,8 +23,17 @@ export default class ListProduct extends Component {
             listproducts: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
             refreshing: false,
             page: 1,
+            titlename: ''
         }
         this.arr = [];
+    }
+
+    componentWillMount(){
+        const { navigation } = this.props;
+        const titleName = navigation.getParam('titlename', 'NOT NAME');
+        
+        this.setState({titlename:titleName})
+
     }
 
     componentDidMount() {
@@ -44,12 +53,13 @@ export default class ListProduct extends Component {
     _onRefresh = () => {
         const { navigation } = this.props;
         const { page } = this.state;
-        const typeId = navigation.getParam('typeId', 'key-id');
+        const typeId = navigation.getParam('typeId', 'NO ID');
+       
 
         this.setState({ refreshing: true, page: (page + 1) });
         getListProduct(typeId, page).then(arrProduct => {
             this.arr = arrProduct.concat(this.arr);
-            
+
             this.setState({
                 listproducts: this.state.listproducts.cloneWithRows(this.arr),
                 refreshing: false
@@ -70,9 +80,9 @@ export default class ListProduct extends Component {
         })
     }
 
-    _gotoDetails=(product)=>{
+    _gotoDetails = (product) => {
         const { navigation } = this.props;
-        navigation.navigate('Details',{
+        navigation.navigate('Details', {
             productkey: product,
         })
     }
@@ -93,11 +103,11 @@ export default class ListProduct extends Component {
                     </TouchableOpacity>
 
                     <Text style={{ textAlign: "center", color: '#2c3e50', flex: 1, fontSize: 18, fontWeight: "bold" }}>
-                        Festival Dress
-                        </Text>
+                        {this.state.titlename}
+                    </Text>
                 </View>
                 <ListView
-                
+
                     enableEmptySections
                     // contentContainerStyle={styles.body}
                     dataSource={this.state.listproducts}
@@ -121,9 +131,9 @@ export default class ListProduct extends Component {
                                 <View style={{ flexDirection: "row", justifyContent: 'space-between', }}>
                                     <Text>Color : {product.color}</Text>
                                     <View style={{ elevation: 10, height: height * 0.02, width: width * 0.03, backgroundColor: product.color.toLowerCase(), borderRadius: 5, margin: 5 }} />
-                                    <TouchableOpacity 
-                                    onPress={()=>this._gotoDetails(product)}
-                                    style={{ justifyContent: "center", }}>
+                                    <TouchableOpacity
+                                        onPress={() => this._gotoDetails(product)}
+                                        style={{ justifyContent: "center", }}>
                                         <Text style={{ color: '#df2f33', fontWeight: "bold", fontSize: 11 }}>SHOW DETAILS</Text>
                                     </TouchableOpacity>
 

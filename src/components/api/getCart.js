@@ -13,7 +13,7 @@ const getCart = async () => {
       }
       
     } catch (error) {
-      // console.log("we dont hva data")
+      // ("we dont hva data")
     } finally {
       return [];
     }

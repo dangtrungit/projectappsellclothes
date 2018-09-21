@@ -12,7 +12,7 @@ export default class Header extends Component {
         super(props);
         this.state = {
             ima: require('../../images/round_menu_white_24dp.png'),
-            textinput:'',
+            textsearch:'',
         }
     }
 

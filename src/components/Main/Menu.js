@@ -25,11 +25,11 @@ export default class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 0,
+     
       user: '',
     }
     global.onSignIn = this._onSignIn.bind(this);
-    global.gotoProductDetail=this._gotoProductDetail.bind(this);
+    global.gotoProductDetail = this._gotoProductDetail.bind(this);
 
   }
 
@@ -45,7 +45,7 @@ export default class Menu extends Component {
   }
 
   _onPress = () => {
-   
+
     this.setState({
       title: this.state.title + 1
     })
@@ -61,7 +61,7 @@ export default class Menu extends Component {
     this.props.navigation.navigate('OrderHistorys', { itemId: this.state.title, otherParam: 'data of you' })
   }
 
-  _gotoProductDetail = (product) => {    
+  _gotoProductDetail = (product) => {
     this.props.navigation.navigate('ProductDetails', { productkey: product })
   }
 
@@ -93,7 +93,7 @@ export default class Menu extends Component {
     );
 
     const loginJSX = (
-      <View>
+      <View >
 
         <TouchableOpacity
           onPress={this._gotoOrderHistory}
@@ -131,25 +131,16 @@ export default class Menu extends Component {
     );
     const mainJSX = this.state.user ? loginJSX : logoutJSX;
     return (
-      <ScrollView>
+      
         <View style={styles.container}>
           <Image
             style={styles.imageaccount}
             source={require('../../images/icons8-administrator-male-512.png')} />
-          <Text style={{ color: '#008090', fontWeight: 'bold' }}>{this.state.user.name}</Text>
+          <Text style={{ color: '#008090', fontWeight: 'bold',fontSize:20,textAlignVertical:'top'}}>{this.state.user.name}</Text>
           {mainJSX}
-
-
-          <Text style={styles.welcome}>
-            Welcome to App Sale!
-             </Text>
-          <TouchableOpacity onPress={this._onPress}>
-            <Text style={styles.instructions}>
-              {this.state.title}
-            </Text>
-          </TouchableOpacity>
+         
         </View>
-      </ScrollView>
+      
     );
   }
 }

@@ -12,4 +12,4 @@ export default class App2 extends Component {
     render() {
       return <RootStack />;
     }
-  }
+}

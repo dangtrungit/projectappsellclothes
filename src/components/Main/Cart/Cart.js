@@ -6,7 +6,8 @@ import {
     Dimensions,
     ScrollView,
     TouchableOpacity,
-    ListView
+    ListView,
+    Alert
 
 } from 'react-native';
 const uri = 'http://192.168.0.101:8888/api/images/product/'
@@ -36,11 +37,30 @@ export default class Cart extends Component {
             const arrayDetail = cartArray.map(value => ({
                 id: value.product.id,
                 quantity: value.quantity
-            //  a : console.log("MT QUANTITY",value.quantity),
+                //  a : console.log("MT QUANTITY",value.quantity),
             }));
-            const result = sendOrder(token,arrayDetail)
-            // console.log(" RES", result)
-            result ? console.log(" Sucesss") :console.log(" fail")
+            sendOrder(token, arrayDetail)
+                .then(res => {
+                    if (res === 'THEM_THANH_CONG') {
+                        Alert.alert(
+                            'Notice',
+                            'Thanh toán thành công!',
+                            [
+                                { text: 'OK', },
+                            ],
+                            { cancelable: false })
+                    } else {
+                        Alert.alert(
+                            'Notice',
+                            'Không thành công, Vui lòng xác thực tài khoản!',
+                            [
+                                { text: 'OK', },
+                            ],
+                            { cancelable: false })
+                    }
+                })
+            // 
+
         } catch (error) {
             console.log("MyEoorrrr", error)
         }

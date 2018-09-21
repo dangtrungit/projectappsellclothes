@@ -69,7 +69,7 @@ import { createStackNavigator } from 'react-navigation';
         return (
             <ScrollView >
                 <Collection
-                    gotoDetails={this._gotoProductDetail} />
+                   navigate={navigate} />
                 <Category
                     types={types}
                     navigate={navigate}

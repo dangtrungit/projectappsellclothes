@@ -118,10 +118,9 @@ const styles = StyleSheet.create({
     container: {
      
       flex: 1,
-      justifyContent: 'center',
+      justifyContent: 'space-around',
       alignItems: 'center',
-      backgroundColor: '#d8f4ff',
-      
+      backgroundColor: '#d8f4ff', 
     },
     welcome: {
       fontSize: 18,
